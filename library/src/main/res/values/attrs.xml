@@ -8,10 +8,12 @@
     <attr name="compactCalendarCurrentDayIndicatorStyle" format="enum">
         <enum name="fill_large_indicator" value="1" />
         <enum name="no_fill_large_indicator" value="2" />
+        <enum name="no_indicator" value="4" />
     </attr>
     <attr name="compactCalendarCurrentSelectedDayIndicatorStyle" format="enum">
         <enum name="fill_large_indicator" value="1" />
         <enum name="no_fill_large_indicator" value="2" />
+        <enum name="no_indicator" value="4" />
     </attr>
     <declare-styleable name="CompactCalendarView">
         <attr name="compactCalendarTextSize" format="dimension"/>

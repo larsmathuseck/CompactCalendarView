@@ -805,8 +805,8 @@ class CompactCalendarController {
                 boolean isSameDayAsCurrentDay = shouldDrawCurrentDayCircle && (todayDayOfMonth == dayOfMonth) && (eventYear == currentYear);
                 boolean isCurrentSelectedDay = shouldDrawSelectedDayCircle && (selectedDayOfMonth == dayOfMonth);
 
-                if (shouldDrawIndicatorsBelowSelectedDays || (!shouldDrawIndicatorsBelowSelectedDays && !isSameDayAsCurrentDay && !isCurrentSelectedDay) || animationStatus == EXPOSE_CALENDAR_ANIMATION) {
-                    if (eventIndicatorStyle == FILL_LARGE_INDICATOR || eventIndicatorStyle == NO_FILL_LARGE_INDICATOR) {
+                if (shouldDrawIndicatorsBelowSelectedDays || (!shouldDrawIndicatorsBelowSelectedDays) || animationStatus == EXPOSE_CALENDAR_ANIMATION) {
+                    if (eventIndicatorStyle == FILL_LARGE_INDICATOR || eventIndicatorStyle == NO_FILL_LARGE_INDICATOR || eventIndicatorStyle == NO_INDICATOR) {
                         if (!eventsList.isEmpty()) {
                             Event event = eventsList.get(0);
                             drawEventIndicatorCircle(canvas, xPosition, yPosition, event.getColor());
@@ -966,11 +966,11 @@ class CompactCalendarController {
             dayPaint.setStrokeWidth(2 * screenDensity);
             dayPaint.setStyle(Paint.Style.STROKE);
         } else {
-            if (indicatorStyle != NO_INDICATOR) {
-                dayPaint.setStyle(Paint.Style.FILL);
-            }
+            dayPaint.setStyle(Paint.Style.FILL);
         }
-        drawCircle(canvas, x, y, color, circleScale);
+        if (indicatorStyle != NO_INDICATOR) {
+            drawCircle(canvas, x, y, color, circleScale);
+        }
         dayPaint.setStrokeWidth(strokeWidth);
         dayPaint.setStyle(Paint.Style.FILL);
     }
